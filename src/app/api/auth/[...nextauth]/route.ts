@@ -1,18 +1,9 @@
-import NextAuth from 'next-auth'
+import { NextRequest } from 'next/server';
 
-const handler = NextAuth({
-  providers: [
-    // Aquí irían tus providers (Google, Facebook, etc.)
-    // Por ahora lo dejamos vacío para probar
-  ],
-  callbacks: {
-    async session({ session, token }) {
-      return session
-    },
-  },
-  pages: {
-    signIn: '/auth/signin',
-  },
-})
+export async function GET(request: NextRequest) {
+  return new Response('Auth API', { status: 200 });
+}
 
-export { handler as GET, handler as POST }
+export async function POST(request: NextRequest) {
+  return new Response('Auth API', { status: 200 });
+}

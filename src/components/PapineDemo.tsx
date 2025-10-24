@@ -210,20 +210,20 @@ export default function PapineDemo() {
         <div className="flex flex-wrap gap-4 justify-center">
           {Object.entries(colorPalette.accents).map(([key, accent]) => (
             <button
-              key={key}
-              className={`px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${
-                selectedAccent === key ? 'ring-2 ring-offset-2' : 'opacity-80 hover:opacity-100'
-              }`}
-              style={{
-                background: accent.DEFAULT,
-                color: 'white',
-                ringColor: currentColors.accent,
-                ringOffsetColor: currentColors.bg
-              }}
-              onClick={() => setSelectedAccent(key)}
-            >
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-            </button>
+            key={key}
+            className={`px-4 py-2 rounded-lg font-semibold transition-all duration-200 ${
+              selectedAccent === key 
+                ? 'ring-2 ring-offset-2 ring-current ring-offset-current' 
+                : 'opacity-80 hover:opacity-100'
+            }`}
+            style={{
+              background: accent.DEFAULT,
+              color: 'white'
+            }}
+            onClick={() => setSelectedAccent(key)}
+          >
+            {key.charAt(0).toUpperCase() + key.slice(1)}
+          </button>
           ))}
         </div>
       </section>

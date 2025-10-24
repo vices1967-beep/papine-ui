@@ -9,7 +9,7 @@ export default function AccentSelector() {
         <div
           key={key}
           className="accent-option"
-          style={{ backgroundColor: color.base }}
+          style={{ backgroundColor: `rgb(${color.primary.join(', ')})` }}
           onClick={() => setAccent(key as keyof typeof accentColors)}
           title={key}
         />
