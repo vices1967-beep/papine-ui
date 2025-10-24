@@ -1,26 +1,159 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* MODO OSCURO (default) */
+    --bg-primary: 10 10 10;
+    --surface-primary: 17 17 17;
+    --muted-primary: 46 59 50;
+    --text-primary: 237 237 237;
+    --text-muted: 191 199 194;
+    --accent-primary: 0 168 53;
+    --accent-strong: 0 185 69;
+  }
+
+  .light {
+    /* MODO CLARO - VALORES EXPLÍCITOS */
+    --bg-primary: 249 250 251 !important;
+    --surface-primary: 255 255 255 !important;
+    --muted-primary: 224 231 226 !important;
+    --text-primary: 34 34 34 !important;
+    --text-muted: 85 85 85 !important;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* APLICAR VARIABLES DIRECTAMENTE AL BODY */
+  body {
+    background-color: rgb(var(--bg-primary)) !important;
+    color: rgb(var(--text-primary)) !important;
+    font-family: ui-sans-serif, system-ui, sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* DEBUG VISUAL */
+  .theme-debug::before {
+    content: "Tema: var(--debug, 'oscuro')";
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 5px;
+    z-index: 10000;
+    font-family: monospace;
+  }
+
+  .light .theme-debug::before {
+    content: "Tema: claro";
+    background: blue;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* BOTONES - USAR VARIABLES DIRECTAMENTE */
+  .btn {
+    @apply inline-flex items-center justify-center font-semibold rounded-xl px-6 py-3 transition-all duration-200 border-none cursor-pointer text-base;
+  }
+
+  .btn-primary {
+    background-color: rgb(var(--accent-primary)) !important;
+    color: black !important;
+  }
+
+  .btn-primary:hover {
+    background-color: rgb(var(--accent-strong)) !important;
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    background: transparent !important;
+    border: 2px solid rgb(var(--accent-primary)) !important;
+    color: rgb(var(--accent-primary)) !important;
+  }
+
+  .btn-outline:hover {
+    background: rgb(var(--accent-primary)) !important;
+    color: black !important;
+    transform: translateY(-2px);
+  }
+
+  /* CARDS - USAR VARIABLES DIRECTAMENTE */
+  .card {
+    background-color: rgb(var(--surface-primary)) !important;
+    border: 1px solid rgb(var(--muted-primary)) !important;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    color: rgb(var(--text-primary)) !important;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+  }
+
+  /* HERO - USAR VARIABLES DIRECTAMENTE */
+  .hero {
+    background: linear-gradient(135deg, rgb(var(--muted-primary)) 0%, rgb(var(--bg-primary)) 100%) !important;
+    border-radius: 1.5rem;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: rgb(var(--text-primary)) !important;
+  }
+
+  /* TEXTOS - USAR VARIABLES DIRECTAMENTE */
+  .text-title {
+    color: rgb(var(--text-primary)) !important;
+  }
+
+  .text-body {
+    color: rgb(var(--text-primary)) !important;
+  }
+
+  .text-muted {
+    color: rgb(var(--text-muted)) !important;
+  }
+
+  /* COMPONENTES FIJOS */
+  .theme-toggle {
+    @apply w-14 h-14 flex items-center justify-center rounded-full border-2 cursor-pointer transition-all text-xl;
+    border-color: rgb(var(--muted-primary)) !important;
+    background-color: rgb(var(--surface-primary)) !important;
+    color: rgb(var(--text-primary)) !important;
+  }
+
+  .theme-toggle:hover {
+    transform: scale(1.1);
+    border-color: rgb(var(--accent-primary)) !important;
+  }
+
+  .accent-selector {
+    @apply flex gap-3 p-3 rounded-2xl border shadow-xl;
+    background-color: rgb(var(--surface-primary)) !important;
+    border-color: rgb(var(--muted-primary)) !important;
+  }
+
+  .accent-option {
+    @apply w-8 h-8 rounded-full cursor-pointer border-2 transition-all duration-200;
+    border-color: rgb(var(--muted-primary)) !important;
+  }
+
+  .accent-option:hover {
+    transform: scale(1.1);
+  }
+}
+
+/* UTILIDADES EXTRA PARA DEBUG */
+.debug-light {
+  background-color: #f9fafb !important;
+  color: #222222 !important;
+}
+
+.debug-dark {
+  background-color: #0a0a0a !important;
+  color: #ededed !important;
 }

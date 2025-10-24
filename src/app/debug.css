@@ -1,0 +1,57 @@
+/* DEBUG CSS - ESTILOS SIMPLES PARA TEST */
+.debug-body {
+  background: #0a0a0a !important;
+  color: #ffffff !important;
+  transition: all 0.3s !important;
+}
+
+.debug-body.light {
+  background: #f9fafb !important;
+  color: #222222 !important;
+}
+
+.debug-card {
+  background: #111111 !important;
+  border: 1px solid #2E3B32 !important;
+  color: #ffffff !important;
+  padding: 20px !important;
+  border-radius: 12px !important;
+  margin: 10px 0 !important;
+}
+
+.debug-body.light .debug-card {
+  background: #ffffff !important;
+  border: 1px solid #E0E7E2 !important;
+  color: #222222 !important;
+}
+
+.debug-btn {
+  background: #00A835 !important;
+  color: black !important;
+  padding: 12px 24px !important;
+  border: none !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  margin: 5px !important;
+}
+
+.debug-toggle {
+  position: fixed !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  width: 60px !important;
+  height: 60px !important;
+  background: #111111 !important;
+  border: 2px solid #2E3B32 !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  font-size: 24px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.debug-body.light .debug-toggle {
+  background: #ffffff !important;
+  border: 2px solid #E0E7E2 !important;
+}
